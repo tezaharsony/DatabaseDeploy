@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include layouts/pagetitleteacher%>
+  </head>
+  <body>
+  <center>
+    <h1>TEACHER EDIT FORM</h1><br><br>
+    <form action="/teacher/edit/<%=dataTeacher.id%>" method="POST">
+    First Name:<br>
+    <input type="text" name="first_name" value="<%=dataTeacher.first_name %>">
+    <br>
+    Last Name:<br>
+    <input type="text" name="last_name" value="<%=dataTeacher.last_name %>">
+    <br>
+    Email:<br>
+    <input type="text" name="email" value="<%=dataTeacher.email %>">
+    <br>
+    ContactID<br>
+    <select name="Subject">
+      <% dataSubject.forEach(data =>{ %>
+        <%
+          var selected = ""
+          if(dataTeacher.SubjectId == data.id) {
+            selected = "selected"
+          }
+        %>
+        <option value="<%= data.id %>" <%= selected %> >
+          <%= data.subject_name %>
+      </option>
+     <% }) %>
+
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+  </center>
+  </body>
+</html>

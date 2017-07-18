@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <style>
+            table {
+              font-family:Comic Extrabold, sans-serif;
+              position: center;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 1px;
+            }
+
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+          </style>
+          <%- include layouts/pagetitleteacher %>
+          </head>
+
+          <body>
+          <center><h3>Teachers data</h3><center><br>
+            <a href="/teacher/add"><button type="Submit" name="Add">Add New Teacher</button></a>
+            <br><br>
+            <form action="/teacher" method="POST">
+          <br><br>
+          <center>
+          <table>
+            <tr>
+              <th>id</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+
+              </th>
+              <th colspan='2'></th>
+            </tr>
+            <% dataTeacher.forEach(teacher=>{%>
+            <tr>
+              <td><%= teacher.id%></td>
+              <td><%= teacher.first_name%></td>
+              <td><%= teacher.last_name%></td>
+              <td><%= teacher.email%></td>
+              <% if (teacher.SubjectId == undefined) { %>
+                <td>unassigned</td>
+              <% } else { %>
+                <td><%= teacher.Subject.subject_name %></td>
+              <% } %>
+              <td><a href="/teacher/delete/<%=teacher.id%>"><button type="button" name="Delete">DELETE</button></a></td>
+            </tr>
+            <td><a href="/teacher/edit/<%=teacher.id%>"><button type="button" name="Edit">EDIT</button></a></td>
+              <%})%>
+            </table>
+          </center>
+          </body>
+        </html>

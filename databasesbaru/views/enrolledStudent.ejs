@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <center>
+<%= JSON.stringify(student_subject) %>
+     <a href="/subjects">back to Subject List</a> <br> <br>
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Student Id</th>
+          <th>Score</th>
+          <th></th>
+          <th colspan='2'></th>
+        </tr>
+        <% var sum=1;%>
+        <% student_subject.forEach(ss =>{%>
+        <tr>
+          <td><%= sum++ %></td>
+          <td><%= ss.Student.first_name + ' ' + ss.Student.last_name %></td>
+          <td><%= ss.score %></td>
+          <%})%>
+        </table>
+      <br>
+  </form>
+  </center>
+  </body>
+</html>
